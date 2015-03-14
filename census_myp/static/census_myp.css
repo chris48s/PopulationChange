@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+body {
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+p {
+	margin: 0px;
+	padding: 0px;
+}
+
+.box {
+	width: 1000px;
+	background-color:#ebebeb;
+	border: 1px solid #a7a7a7;
+	margin: 0px;
+	padding: 10px;
+	border-radius:4px;
+}
+
+.accreditation {
+	font-size: 70%;
+}
+
+.chart {
+	width: 1000px;
+	background-color:#ffffff;
+	border: 1px solid #a7a7a7;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius:4px;
+}
+
+.status {
+	padding-top: 4px;
+	display: inline;
+	float: right;
+	text-align: right;
+}
