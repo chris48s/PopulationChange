@@ -74,8 +74,8 @@ def get_chart_json(request):
 					"gcharts_json": helpers.format_data_for_gcharts(data),
 				}
 		else:
-			raise Http404('parameter not specified')
+			raise Http404('invalid parameter')
 	else:
-		raise Http404('invalid parameter')
+		raise Http404('parameter not specified')
 	
 	return render(request, 'json', context)
