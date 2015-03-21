@@ -1,7 +1,7 @@
 from django.test import TestCase
 import datetime
 from api_calls import *
-from census_myp.views import Helpers
+from census_myp.views import *
 
 
 class HelperTests(TestCase):
@@ -132,3 +132,19 @@ class APICallsTests(TestCase):
 		result = api_calls._Api_Calls__get_myp_superseded_from_db()
 		self.assertEqual(len(result), 0)
 
+
+
+class ViewTests(TestCase):
+	fixtures = ['myp_superseded']
+	
+	def test_get_chart_json_noparam(self):
+		response = self.client.get('/get_chart_json/')
+		self.assertEqual(response.status_code, 404)
+		
+	def test_get_chart_json_invalidparam(self):
+		response = self.client.get('/get_chart_json/', {'LA': 'cheese'})
+		self.assertEqual(response.status_code, 404)
+		
+	def test_get_chart_json_validparam(self):
+		response = self.client.get('/get_chart_json/', {'LA': 'E07000223'})
+		self.assertEqual(response.status_code, 200)
