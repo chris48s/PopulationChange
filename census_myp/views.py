@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import Http404
+from django.http import HttpResponse
 from api_calls import *
 from census_myp.models import stat
 import json
@@ -70,12 +71,8 @@ def get_chart_json(request):
 			except:
 				raise Http404('failed to retreive data')
 			else:
-				context = {
-					"gcharts_json": helpers.format_data_for_gcharts(data),
-				}
+				return HttpResponse(helpers.format_data_for_gcharts(data), content_type='application/json')
 		else:
 			raise Http404('invalid parameter')
 	else:
 		raise Http404('parameter not specified')
-	
-	return render(request, 'json', context)
